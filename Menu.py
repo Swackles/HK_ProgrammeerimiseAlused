@@ -4,6 +4,8 @@ os.system('cls')
 
 print("""   -----Teretulemast-----""")
 
+currentDir = os.getcwd()
+
 directory = os.listdir()
 
 directory.remove(".git")
@@ -19,6 +21,15 @@ print("""   ----------------------
 
 """)
 
-selection = input("Vali teema (kas id või nimi): ")
+selection = input("Vali teema: ")
+if (directory.index[selection]
 
-print(typeof(selection))
+if (type[selection] is int:
+    try:
+        selection = int(selection)
+    catch ValueError:
+        print("What vodoo is this")
+
+if (type[selection] is str:
+    exec(open(currentDir,"//",directory).read())
+    
