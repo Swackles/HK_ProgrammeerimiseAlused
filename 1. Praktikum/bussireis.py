@@ -10,7 +10,7 @@ def getArrival():
         arrivalMinute = int(arrival[3:])
 
         if (len(arrival[2:-2]) != 1 or arrival[2:-2] != ":" or arrivalHour > 23 or arrivalHour < 0 or arrivalMinute > 59 or arrivalMinute < 0): 
-            print("Sisend kellaeg on valesti vormistatud1")
+            print("Sisend kellaeg on valesti vormistatud")
 
             arrival = getArrival()
 
@@ -20,23 +20,23 @@ def getArrival():
         
 
     except ValueError:
-        print("Sisend kellaaeg on valesti vormistatud2")
+        print("Sisend kellaaeg on valesti vormistatud")
 
         arrival = getArrival()
 
     return arrival
 
 def getLeaving():
-    leaving = input("Sisesta väljumisaeg (xx:xx)")
+    leaving = input("Sisesta väljumisaeg (xx:xx): ")
 
     try:
         leavingHour = int(leaving[:2])
         leavingMinute = int(leaving[3:])
 
         if (len(leaving[2:-2]) != 1 or leaving[2:-2] != ":" or leavingHour > 23 or leavingHour < 0 or leavingMinute > 59 or leavingMinute < 0): 
-            print("Sisend kellaeg on valesti vormistatud1")
+            print("Sisend kellaeg on valesti vormistatud")
 
-            leaving = getleaving()
+            leaving = getLeaving()
 
             return leaving
 
@@ -44,18 +44,26 @@ def getLeaving():
         
 
     except ValueError:
-        print("Sisend kellaaeg on valesti vormistatud2")
+        print("Sisend kellaaeg on valesti vormistatud")
 
         leaving = getleaving()
 
     return leaving
 
-def duration(arrival, leaving):
-    hours = arrival[0] - leaving[0]
-
-    print(hours)
+    return percent
 
 arrival = getArrival()
 leaving = getLeaving()
+
+hours = (arrival[0] - leaving[0])
+minutes = arrival[1] - leaving[1]
+
+if hours < 0:
+    hours = hours * -1
+
+durationMinutes = hours * 60 + minutes
+durationHours = hours + ((float(minutes) * 100) / 60)
+
+print("""   {} minutit või {} tundi""".format(durationMinutes, durationHours))
 
 
