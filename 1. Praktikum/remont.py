@@ -50,5 +50,5 @@ print("""                      {}m
 
     Ruumala: {}m^2
     Värvi kulub: {}l
-""".format(widht, lenght, widht * lenght , (widht * lenght) / paint))
+""".format(widht, lenght, widht * lenght , round((widht * lenght) / paint, 2)))
 

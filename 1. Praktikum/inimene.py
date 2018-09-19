@@ -2,121 +2,107 @@ import math
 import os
 
 os.system('cls')
-def GetAge():
-    try:
-        age = int(input("Sisesta oma vanus: "))
+
+class Human():
+    age = 0
+    height = 0
+    weight = 0 
+    resultMale = 0
+    resultFemale = 0
+
+    def __init__(self, age, height, weight, male = 0, female = 0):
+        self.age = age
+        self.height = height
+        self.weight = weight
+
+        if (male != 0 and female != 0):
+            self.resultMale = Result(male[0], male[1], male[2], male[3], male[4])
+            self.resultFemale = Result(female[0], female[1], female[2], female[3], female[4])
+
+    def __str__(self):
+        return str(self.__dict__)
+
+    def __eq__(self, other): 
+        return self.__dict__ == other.__dict__
+
+
+    def CreateResult(self):
+
+        IdealWeight = [(3 * self.height - 450 + self.age) * 0.25 + 45, (3 * self.height - 450 + self.age) * 0.225 + 40.5]   
+
+        Fat = [(self.weight - IdealWeight[0]) / self.weight * 100 + 15, (self.weight - IdealWeight[1]) / self.weight * 100 + 22]
+
+        Density = [8.9 * Fat[0] + 11 * (100 - Fat[0]), 8.9 * Fat[1] + 11 * (100 - Fat[1])]
+
+        Volume = [self.weight / Density[0], self.weight / Density[1]]
+
+        Area = (1000 * self.weight)**((35.75 - math.log10(self.weight)) / 53.2) * ((self.height**0.3) / 3118.2)
+
+        self.resultMale = Result(round(IdealWeight[0], 2), round(Fat[0], 2), round(Density[0], 2), round(Volume[0], 3), round(Area, 3))
+        self.resultFemale = Result(round(IdealWeight[1], 2), round(Fat[1], 2), round(Density[1], 2), round(Volume[1], 3), round(Area, 3))
+
+class Result():
+    idealWeight = 0
+    fat = 0
+    density = 0
+    volume = 0
+    area = 0
+
+    def __init__(self, idealWeight, fat, density, volume, area):
+        self.idealWeight = idealWeight
+        self.fat = fat
+        self.density = density
+        self.volume = volume
+        self.area = area
+
+def newHuman():
+
+    def GetInfo(point):
+
+        question = ["Sisesta oma vanus: ", "Sisesta oma pikkus(cm): ", "Sisesta oma kaal (kg): "]
+        error = ["Vanus peab olema number", "Pikkus peab olema number", "kaal peab olema number"]
+
+        try:
+            info = int(input(question[point]))
     
-    except ValueError:
-        print("Vanus peab olema number")
+        except ValueError:
+            print(error[point])
         
-        age = GetAge()
+            info = GetInfo(point)
 
-    return age
+        return info
 
-def GetHeight():
-    try:
-        height = int(input("Sisesta oma pikkus(cm)"))
-    
-    except ValueError:
-        print("Pikkus peab olema number")
+    return Human(GetInfo(0), GetInfo(1), GetInfo(2))
 
-        height = GetHeight()
+def main():
 
-    return height
+    person = newHuman()
+    person.CreateResult()
+    PersonData = [person.age, person.height, person.weight]
+    Male = [person.resultMale.idealWeight, person.resultMale.fat, person.resultMale.density, person.resultMale.volume, person.resultMale.area]
+    Female = [person.resultFemale.idealWeight, person.resultFemale.fat, person.resultFemale.density, person.resultFemale.volume, person.resultFemale.area]
 
-def GetWeight():
-    try:
-        weight = float(input("Sisesta oma kaal (kg)"))
+    os.system('cls')
 
-    except ValueError:
-        print("kaal peab olema number")
+    print("""
+    -----Sinu Informatsioon-----
+    """)
 
-        weight = GetWeight()
-    
-    return weight
+    row_format ="{:>10}" * (len(["Info"]) + 1)
+    print(row_format.format("", *["Info"]))
+    for header, info in zip(["Vanus", "Pikkus", "Kaal"], PersonData):
+        print (row_format.format(header, info))
 
-def GetGender():
-    gender = input("Sisesta sugu (m/n)")
+    print("""
 
-    if (gender != "m" and gender != "n"):
-        gender = GetGender() 
+    ------Arvutuse Tulemus------
+    """)
 
-    return gender
+    row_format ="{:>15}" * (len(["Mees", "Naine"]) + 1)
+    print(row_format.format("", *["Mees", "Naine"]))
+    for Header, Male, Female in zip(["ideaalkaal", "rasvasuse %", "tihedus", "ruumala", "pindala"], Male, Female):
+        print (row_format.format(Header, Male, Female))
 
-age = GetAge()
-height = GetHeight()
-gender = GetGender()
-weight = GetWeight()
 
-def IdealWeight(age, height, gender):
-
-    if (gender == "m"):
-        ideal = (3 * height - 450 + age) * 0.25 + 45
-
-    elif (gender == "n"):
-        ideal = (3 * height - 450 + age) * 0.225 + 45
-    
-    return ideal
-
-def FatPercent(weight, idealWeight, gender):
-
-    if (gender == "m"):
-        fatPercent = (weight - idealWeight) / weight * 100 + 15 
-
-    elif (gender == "n"):
-        fatPercent = (weight - idealWeight) / weight * 100 + 22
-
-    return fatPercent
-
-def Density(fat):
-    density = 8.9 * fat + 11 * (100 - fat)
-
-    return density
-
-def Volume(weight, density):
-    volume = weight / density
-
-    return volume
-
-def Area(weight, height):
-    area = (1000 * weight)**((35.75 - math.log10(weight)) / 53.2) * ((height**0.3) / 3118.2)
-
-    return area
-
-os.system('cls')
-
-print("""Sinu informatsioon:
-
-    Age - {}
-    Height - {}m
-    Gender - {}
-    Weight - {}kg
-""".format(age, height, gender, weight))
-
-idealWeight = IdealWeight(age, height, gender)
-fatPercent = FatPercent(weight, idealWeight, gender)
-density = Density(fatPercent)
-volume = Volume(weight, density)
-area = Area(weight, height)
-
-def WeightSit(currentWeight, idealWeight):
-    if (currentWeight > idealWeight):
-        situation = "Su hetkene kaal on suurem kui ideaal kaal"
-    elif (currentWeight < idealWeight):
-        situation = "Su hetkene kaal on väiksem kui ideaal kaal"
-    else:
-        situation = "Su hetkene kaal ja ideaal kaal on sama"
-
-    return situation
-
-weightSit = WeightSit(weight, idealWeight)
-
-print("""    ------------------------------------------
-
-    Ideaal kaal - {}kg
-        {}
-    Rasva Protsent - {}%
-    Rasva Tihedus - {}kg/m^3
-    Ruumala - {}m^3
-    Pindala - {}m^2
-""".format(idealWeight, weightSit, fatPercent, density, volume, area))
+if __name__ == '__main__':
+    main()

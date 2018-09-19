@@ -24,7 +24,7 @@ def getArrival():
 
         arrival = getArrival()
 
-    return arrival
+        return arrival
 
 def getLeaving():
     leaving = input("Sisesta väljumisaeg (xx:xx): ")
@@ -46,24 +46,33 @@ def getLeaving():
     except ValueError:
         print("Sisend kellaaeg on valesti vormistatud")
 
-        leaving = getleaving()
+        leaving = getLeaving()
 
-    return leaving
+        return leaving
 
     return percent
 
 arrival = getArrival()
 leaving = getLeaving()
 
-hours = (arrival[0] - leaving[0])
+hours = arrival[0] - leaving[0]
 minutes = arrival[1] - leaving[1]
 
 if hours < 0:
-    hours = hours * -1
+    hours = (24 - leaving[0]) + arrival[0]
+
+if minutes < 0:
+    minutes =(60 - leaving[1]) + arrival[1]
 
 durationMinutes = hours * 60 + minutes
-durationHours = hours + ((float(minutes) * 100) / 60)
+durationHours = round(hours + (((minutes * 100) / 60 ) / 100), 2)
 
+print(durationMinutes)
+
+print("""
+    Väljub: {}
+    Saabub: {}
+""".format(str(leaving[0]) + ":" + str(leaving[1]), str(arrival[0]) + ":" + str(arrival[1])))
 print("""   {} minutit või {} tundi""".format(durationMinutes, durationHours))
 
 
