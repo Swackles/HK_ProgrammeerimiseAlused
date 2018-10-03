@@ -5,13 +5,14 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{b9b9a430-ba9f-48a0-a336-65e2a5e0445d}</ProjectGuid>
     <ProjectHome />
-    <StartupFile>Menu.py</StartupFile>
+    <StartupFile>2. Praktikum\liigaasta.py</StartupFile>
     <SearchPath />
     <WorkingDirectory>.</WorkingDirectory>
     <OutputPath>.</OutputPath>
     <ProjectTypeGuids>{888888a0-9f3d-457c-b088-3a5042f75d52}</ProjectTypeGuids>
     <LaunchProvider>Standard Python launcher</LaunchProvider>
     <InterpreterId>Global|PythonCore|3.6</InterpreterId>
+    <IsWindowsApplication>False</IsWindowsApplication>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)' == 'Debug'" />
   <PropertyGroup Condition="'$(Configuration)' == 'Release'" />
@@ -25,10 +26,23 @@
     <Compile Include="1. Praktikum\Jalgrattur_ja_Karbes.py" />
     <Compile Include="1. Praktikum\remont.py" />
     <Compile Include="1. Praktikum\sisseastumine.py" />
+    <Compile Include="2. Praktikum\jagamine.py" />
+    <Compile Include="2. Praktikum\jagavus.py" />
+    <Compile Include="2. Praktikum\kolmnurga_kontroll.py" />
+    <Compile Include="2. Praktikum\liigaasta.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="2. Praktikum\ruutvõrrand.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="2. Praktikum\ruutvõrrand_test.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Menu.py" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="1. Praktikum" />
+    <Folder Include="2. Praktikum\" />
   </ItemGroup>
   <ItemGroup>
     <InterpreterReference Include="Global|PythonCore|3.6" />

@@ -102,6 +102,85 @@ def main():
     print(row_format.format("", *["Mees", "Naine"]))
     for Header, Male, Female in zip(["ideaalkaal", "rasvasuse %", "tihedus", "ruumala", "pindala"], Male, Female):
         print (row_format.format(Header, Male, Female))
+    print("");
+    #I have a headache
+    if (person.age < 10 or person.age > 85):
+        print("Pole ilus internetis valetada");
+    elif (person.age >= 10 and person.age <= 16):
+        if (person.resultMale.fat < 10):
+            print("Mees: Sa peaksid rohkem sööma");
+        elif (person.resultMale.fat >= 10 and person.resultMale.fat <= 18):
+            print("Mees: Sa sööd täpselt nii palju kui vaja");
+        elif (person.resultMale.fat >= 19 and person.resultMale.fat <= 23):
+            print("Mees: Rahune maha söögiga");
+        elif (person.resultMale.fat > 23):
+            print("Mees: Söö vähem ja tee trenni")
+
+        if (person.resultFemale.fat < 18):
+            print("Naine: Sa peaksid rohkem sööma");
+        elif (person.resultFemale.fat >= 18 and person.resultFemale.fat <= 28):
+            print("Naine: Sa sööd täpselt nii palju kui vaja");
+        elif (person.resultFemale.fat >= 29 and person.resultFemale.fat <= 35):
+            print("Naine: Rahune maha söögiga");
+        elif (person.resultFemale.fat > 35):
+            print("Naine: Söö vähem ja tee trenni")
+    
+    elif (person.age >= 17 and person.age <= 39):        
+        if (person.resultMale.fat < 12):
+            print("Mees: Sa peaksid rohkem sööma");
+        elif (person.resultMale.fat >= 12 and person.resultMale.fat <= 20):
+            print("Mees: Sa sööd täpselt nii palju kui vaja");
+        elif (person.resultMale.fat >= 21 and person.resultMale.fat <= 25):
+            print("Mees: Rahune maha söögiga");
+        elif (person.resultMale.fat > 25):
+            print("Mees: Söö vähem ja tee trenni")
+
+        if (person.resultFemale.fat < 20):
+            print("Naine: Sa peaksid rohkem sööma");
+        elif (person.resultFemale.fat >= 20 and person.resultFemale.fat <= 32):
+            print("Naine: Sa sööd täpselt nii palju kui vaja");
+        elif (person.resultFemale.fat >= 33 and person.resultFemale.fat <= 38):
+            print("Naine: Rahune maha söögiga");
+        elif (person.resultFemale.fat > 38):
+            print("Naine: Söö vähem ja tee trenni")
+
+    elif (person.age >= 40 and person.age <= 55):
+        if (person.resultMale.fat < 13):
+            print("Mees: Sa peaksid rohkem sööma");
+        elif (person.resultMale.fat >= 13 and person.resultMale.fat <= 21):
+            print("Mees: Sa sööd täpselt nii palju kui vaja");
+        elif (person.resultMale.fat >= 22 and person.resultMale.fat <= 26):
+            print("Mees: Rahune maha söögiga");
+        elif (person.resultMale.fat > 26):
+            print("Mees: Söö vähem ja tee trenni")
+
+        if (person.resultFemale.fat < 23):
+            print("Naine: Sa peaksid rohkem sööma");
+        elif (person.resultFemale.fat >= 23 and person.resultFemale.fat <= 35):
+            print("Naine: Sa sööd täpselt nii palju kui vaja");
+        elif (person.resultFemale.fat >= 36 and person.resultFemale.fat <= 41):
+            print("Naine: Rahune maha söögiga");
+        elif (person.resultFemale.fat > 41):
+            print("Naine: Söö vähem ja tee trenni")
+
+    elif (person.age >= 56 and person.age <= 85):
+        if (person.resultMale.fat < 14):
+            print("Mees: Sa peaksid rohkem sööma");
+        elif (person.resultMale.fat >= 14 and person.resultMale.fat <= 22):
+            print("Mees: Sa sööd täpselt nii palju kui vaja");
+        elif (person.resultMale.fat >= 23 and person.resultMale.fat <= 27):
+            print("Mees: Rahune maha söögiga");
+        elif (person.resultMale.fat > 27):
+            print("Mees: Söö vähem ja tee trenni")
+
+        if (person.resultFemale.fat < 24):
+            print("Naine: Sa peaksid rohkem sööma");
+        elif (person.resultFemale.fat >= 24 and person.resultFemale.fat <= 36):
+            print("Naine: Sa sööd täpselt nii palju kui vaja");
+        elif (person.resultFemale.fat >= 37 and person.resultFemale.fat <= 42):
+            print("Naine: Rahune maha söögiga");
+        elif (person.resultFemale.fat > 42):
+            print("Naine: Söö vähem ja tee trenni")
 
 
 if __name__ == '__main__':

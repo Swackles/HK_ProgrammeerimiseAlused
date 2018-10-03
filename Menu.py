@@ -2,7 +2,6 @@ import os
 
 os.system('cls')
 
-
 def display(msg, directory = "null"):
     if (msg == "Welcome"):
         print("""   -----Teretulemast-----""")
