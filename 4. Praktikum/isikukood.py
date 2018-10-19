@@ -32,9 +32,8 @@ class Human():
 
         year = [1800, 1800, 1900, 1900, 2000, 2000]
 
-        self.birthday = str(year[int(self.id[:1])] + int(self.id[1:3])) +"/"+ self.id[3:5] +"/"+ self.id[5:7]
+        self.birthday = str(year[int(self.id[:1]) - 1] + int(self.id[1:3])) +"/"+ self.id[3:5] +"/"+ self.id[5:7]
 
-    def getAge(self):
         currentDate = datetime.datetime.today().strftime('%Y-%m-%d').split("-")
         currentDate = date(int(currentDate[0]), int(currentDate[1]), int(currentDate[2]))
         birthday = self.birthday.split("/")
@@ -42,40 +41,54 @@ class Human():
 
         self.age = math.floor((currentDate - birthdayDate).days / 365)
 
-    def test(self):
-        testnumber = 0
+        testNumber = 0
+
         i = 1
+
         for char in self.id:
             if i == 10:
-                testnumber = testnumber + (int(char) * 1)
-            elif i > 10:
-                print(char)
-                print(testnumber)
-                print(testnumber % 11)
-                if testnumber % 11 == int(char):
-                    self.check = True
+                testNumber = testNumber + (int(char) * 1)
+
+            elif i > 10 and testNumber % 11 == int(char):
+                self.check = True
+
             else:
-                testnumber = testnumber + (int(char) * i)
+                testNumber = testNumber + (int(char) * i)
 
-            i = i + 1
-        
+            i = i + 1  
 
+        if (not self.check):
 
+            testNumber = 0
+            second = False
+            i = 3
 
+            for char in self.id:
+                if i == 4 and second and testNumber % 11== int(char):
+                    self.check = True
+                elif (i == 9):
+                    testNumber = testNumber + (int(char) * i)
+                    second = True
+                    i = 0
+                else:
+                    testNumber = testNumber + (int(char) * i)
+                
+                i = i + 1
 
+        if (int(list(self.id)[10]) == 0):
+            self.check = True
+
+    def print(self):
+        print("ID: ", self.id)
+        print("Sunnipaev: ", self.birthday)
+        print("Sugu: ",self.gender)
+        print("Vanus: ",self.age, " aastat")
+        print("Kas kontroll läbis: ", self.check)
 
 def main():
     person = Human()
     person.getId()
     person.getDataFromId()
-    person.getAge()
-    person.test()
-    print(person.id)
-    print(person.birthday)
-    print(person.gender)
-    print(person.age)
-    print(person.check)
-
 
 if __name__ == '__main__':
     main()
