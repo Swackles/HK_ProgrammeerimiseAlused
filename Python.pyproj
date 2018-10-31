@@ -5,7 +5,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{b9b9a430-ba9f-48a0-a336-65e2a5e0445d}</ProjectGuid>
     <ProjectHome />
-    <StartupFile>2. Praktikum\liigaasta.py</StartupFile>
+    <StartupFile>3. Praktikum\pank.py</StartupFile>
     <SearchPath />
     <WorkingDirectory>.</WorkingDirectory>
     <OutputPath>.</OutputPath>
@@ -38,11 +38,15 @@
     <Compile Include="2. Praktikum\ruutvõrrand_test.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="3. Praktikum\pank.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Menu.py" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="1. Praktikum" />
     <Folder Include="2. Praktikum\" />
+    <Folder Include="3. Praktikum\" />
   </ItemGroup>
   <ItemGroup>
     <InterpreterReference Include="Global|PythonCore|3.6" />
