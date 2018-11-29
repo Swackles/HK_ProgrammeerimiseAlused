@@ -102,6 +102,7 @@ def main():
     print(row_format.format("", *["Mees", "Naine"]))
     for Header, Male, Female in zip(["ideaalkaal", "rasvasuse %", "tihedus", "ruumala", "pindala"], Male, Female):
         print (row_format.format(Header, Male, Female))
+        
     print("");
     #I have a headache
     if (person.age < 10 or person.age > 85):
